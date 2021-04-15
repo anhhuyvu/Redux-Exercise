@@ -20,7 +20,6 @@ import { VerifyPhoneNumber } from "../api/verifyPhoneNumber";
 import "./Signup.css";
 import * as Yup from "yup";
 import { number } from "yup/lib/locale";
-import { VerifyPhonenumber, Verify_OTP } from "../actions";
 
 //const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -142,10 +141,10 @@ const FormikStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
     <Formik
       {...props}
       onSubmit={async (values, helpers) => {
-        if (step === 1) {
+        if (step === 0) {
           VerifyPhoneNumber(values.mobileNumber);
         }
-        if (step === 2) {
+        if (step === 1) {
           VerifyOTP(values.otp);
         }
         if (isLastStep()) {
